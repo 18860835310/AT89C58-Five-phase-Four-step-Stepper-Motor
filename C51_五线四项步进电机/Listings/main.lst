@@ -1,0 +1,86 @@
+C51 COMPILER V9.54   MAIN                                                                  06/08/2024 23:44:12 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Keil_uvision5_MDK\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRI
+                    -NT(.\Listings\main.lst) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include "reg52.h"
+   2          
+   3          typedef unsigned int u16;       //¶ÔÏµÍ³Ä¬ÈÏÊý¾ÝÀàÐÍ½øÐÐÖØ¶¨Òå
+   4          typedef unsigned char u8;
+   5          
+   6          
+   7          //¶¨ÒåULN2003¿ØÖÆ²½½øµç»ú¹Ü½Å
+   8          sbit IN1_A=P1^0;
+   9          sbit IN2_B=P1^1;
+  10          sbit IN3_C=P1^2;
+  11          sbit IN4_D=P1^3;
+  12          
+  13          void delay_ms(u16 ms)
+  14          {
+  15   1              u16 i,j;
+  16   1              for(i=ms;i>0;i--)
+  17   1                      for(j=110;j>0;j--);
+  18   1      }
+  19          
+  20          
+  21          void step_motor_28BYJ48_send_pulse(u16 Direction ,u16 Angle ,u16 Speed)//Direction·½Ïò,Angle½Ç¶È£¬SpeedËÙ¶
+             -È£¬
+  22          {
+  23   1              u16 temp=(Angle/0.7);
+  24   1              u16 i=0,j=0,c=0;
+  25   1              
+  26   1              for(j=0;j<temp;j++)
+  27   1              {
+  28   2                      for(i=0;i<8;i++)
+  29   2                      {
+  30   3                              c=i;
+  31   3                              if(Direction==0)        //Èç¹ûÎªÄæÊ±ÕëÐý×ª
+  32   3                                      c=7-i;//µ÷»»½ÚÅÄÐÅºÅ
+  33   3                              switch(c)//8¸ö½ÚÅÄ¿ØÖÆ£ºA->AB->B->BC->C->CD->D->DA
+  34   3                              {
+  35   4                                      case 0: IN1_A=1;IN2_B=0;IN3_C=0;IN4_D=0;break;
+  36   4                                      case 1: IN1_A=1;IN2_B=1;IN3_C=0;IN4_D=0;break;
+  37   4                                      case 2: IN1_A=0;IN2_B=1;IN3_C=0;IN4_D=0;break;
+  38   4                                      case 3: IN1_A=0;IN2_B=1;IN3_C=1;IN4_D=0;break;
+  39   4                                      case 4: IN1_A=0;IN2_B=0;IN3_C=1;IN4_D=0;break;
+  40   4                                      case 5: IN1_A=0;IN2_B=0;IN3_C=1;IN4_D=1;break;
+  41   4                                      case 6: IN1_A=0;IN2_B=0;IN3_C=0;IN4_D=1;break;
+  42   4                                      case 7: IN1_A=1;IN2_B=0;IN3_C=0;IN4_D=1;break;
+  43   4                                      default: IN1_A=0;IN2_B=0;IN3_C=0;IN4_D=0;break;//Í£Ö¹ÏàÐò       
+  44   4                              }
+  45   3                              delay_ms(Speed);
+  46   3                      }
+  47   2              }
+  48   1              
+  49   1              IN1_A=0;IN2_B=0;IN3_C=0;IN4_D=0;//×Ô¶¯Í£Ö¹
+  50   1      }
+  51          
+  52          void main()
+  53          {       
+C51 COMPILER V9.54   MAIN                                                                  06/08/2024 23:44:12 PAGE 2   
+
+  54   1              //while(1)
+  55   1              //{
+  56   1                      step_motor_28BYJ48_send_pulse(1,360,1);
+  57   1              //}             
+  58   1              while(1){;}
+  59   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    275    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      10
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

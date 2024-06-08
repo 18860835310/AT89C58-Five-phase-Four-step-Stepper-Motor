@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\单向步进电机" 
+PRINT(".\Listings\单向步进电机.m51")

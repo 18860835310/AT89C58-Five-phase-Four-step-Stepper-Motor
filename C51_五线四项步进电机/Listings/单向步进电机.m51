@@ -1,0 +1,208 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/08/2024  23:44:12  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL_UVISION5_MDK\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\main.obj TO .\Objects\单向步进电机 PRINT 
+>> (.\Listings\单向步进电机.m51)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\main.obj (MAIN)
+  D:\KEIL_UVISION5_MDK\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  D:\KEIL_UVISION5_MDK\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FCAST)
+  D:\KEIL_UVISION5_MDK\KEIL_V5\C51\LIB\C51FPS.LIB (?C?CASTF)
+  D:\KEIL_UVISION5_MDK\KEIL_V5\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  D:\KEIL_UVISION5_MDK\KEIL_V5\C51\LIB\C51S.LIB (?C?LNEG)
+
+
+LINK MAP OF MODULE:  .\Objects\单向步进电机 (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         _DATA_GROUP_
+            IDATA   0012H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     016DH     UNIT         ?C?LIB_CODE
+            CODE    096DH     00E4H     UNIT         ?PR?_STEP_MOTOR_28BYJ48_SEND_PULSE?MAIN
+            CODE    0A51H     001EH     UNIT         ?PR?_DELAY_MS?MAIN
+            CODE    0A6FH     0011H     UNIT         ?PR?MAIN?MAIN
+            CODE    0A80H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\单向步进电机 (?C_STARTUP)
+
+
+SEGMENT                                           DATA_GROUP 
+  +--> CALLED SEGMENT                           START    LENGTH
+---------------------------------------------------------------
+?C_C51STARTUP                                   -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                                   -----    -----
+  +--> ?PR?_STEP_MOTOR_28BYJ48_SEND_PULSE?MAIN
+
+?PR?_STEP_MOTOR_28BYJ48_SEND_PULSE?MAIN         0008H    000AH
+  +--> ?PR?_DELAY_MS?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\单向步进电机 (?C_STARTUP)
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/08/2024  23:44:12  PAGE 2
+
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0A80H         SEGMENT       ?C_C51STARTUP
+  I:0012H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0A83H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0A80H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0A80H         LINE#         133
+  C:0A82H         LINE#         134
+  C:0A83H         LINE#         135
+  C:0A84H         LINE#         136
+  C:0A86H         LINE#         185
+  C:0A89H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  C:096DH         PUBLIC        _step_motor_28BYJ48_send_pulse
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  C:0A6FH         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:0A51H         PUBLIC        _delay_ms
+  D:00C8H         PUBLIC        T2CON
+  B:0090H.0       PUBLIC        IN1_A
+  B:0090H.1       PUBLIC        IN2_B
+  B:0090H.2       PUBLIC        IN3_C
+  B:0090H.3       PUBLIC        IN4_D
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          _DELAY_MS
+  D:0006H         SYMBOL        ms
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/08/2024  23:44:12  PAGE 3
+
+
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0A51H         LINE#         13
+  C:0A51H         LINE#         14
+  C:0A51H         LINE#         16
+  C:0A5AH         LINE#         17
+  C:0A6EH         LINE#         18
+  -------         ENDPROC       _DELAY_MS
+  -------         PROC          _STEP_MOTOR_28BYJ48_SEND_PULSE
+  D:0008H         SYMBOL        Direction
+  D:0004H         SYMBOL        Angle
+  D:000AH         SYMBOL        Speed
+  -------         DO            
+  D:000CH         SYMBOL        temp
+  D:0002H         SYMBOL        i
+  D:000EH         SYMBOL        j
+  D:0010H         SYMBOL        c
+  -------         ENDDO         
+  C:096DH         LINE#         21
+  C:0975H         LINE#         22
+  C:0975H         LINE#         23
+  C:098EH         LINE#         24
+  C:0997H         LINE#         26
+  C:09A9H         LINE#         27
+  C:09A9H         LINE#         28
+  C:09ACH         LINE#         29
+  C:09ACH         LINE#         30
+  C:09B0H         LINE#         31
+  C:09B6H         LINE#         32
+  C:09C0H         LINE#         33
+  C:09EAH         LINE#         34
+  C:09EAH         LINE#         35
+  C:09EEH         LINE#         36
+  C:09F2H         LINE#         37
+  C:09F8H         LINE#         38
+  C:09FEH         LINE#         39
+  C:0A08H         LINE#         40
+  C:0A12H         LINE#         41
+  C:0A16H         LINE#         42
+  C:0A20H         LINE#         43
+  C:0A28H         LINE#         44
+  C:0A28H         LINE#         45
+  C:0A2FH         LINE#         46
+  C:0A3DH         LINE#         47
+  C:0A48H         LINE#         49
+  C:0A50H         LINE#         50
+  -------         ENDPROC       _STEP_MOTOR_28BYJ48_SEND_PULSE
+  -------         PROC          MAIN
+  C:0A6FH         LINE#         52
+  C:0A6FH         LINE#         53
+  C:0A6FH         LINE#         56
+  C:0A7EH         LINE#         58
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/08/2024  23:44:12  PAGE 4
+
+
+  -------         MODULE        ?C?FPDIV
+  C:0803H         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?FCAST
+  C:08AAH         PUBLIC        ?C?FCASTC
+  C:08A5H         PUBLIC        ?C?FCASTI
+  C:08A0H         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?CASTF
+  C:08DEH         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        ?C?LNEG
+  C:095FH         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0122H BYTE (14%) *
+******************************************************************************
+
+Program Size: data=19.0 xdata=0 code=655
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
